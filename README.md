@@ -30,7 +30,7 @@ Rural communities face critical healthcare disparities due to limited specialist
 |-----------|-------|-----------|----------|------|
 | 🫀 **Cardiology** | ECG Arrhythmia | 5-class classification | **82.76%** | 2.3 MB |
 | 🫁 **Pulmonology** | Chest X-ray | Pneumonia detection | **92%+** | 5 MB |
-| 🩺 **Dermatology** | Skin Lesion | Melanoma detection | **85-90%** | 4 MB |
+| 🩺 **Dermatology** | Skin Lesion | Skin Conditions (7-class) | **85-90%** | 4 MB |
 
 **Total Suite Size:** ~11 MB
 
@@ -72,13 +72,13 @@ Rural communities face critical healthcare disparities due to limited specialist
 
 ---
 
-### 3. Melanoma Detection
+### 3. Skin Conditions (7-class)
 
 **File:** `models/swasthya_scan_derm.tflite`
 
 **Capabilities:**
-- Binary classification: Benign vs Malignant
-- Input: 128×128 RGB dermoscopy/smartphone image
+- 7-class skin condition classification
+- Input: 224×224 RGB dermoscopy/smartphone image
 - Early skin cancer screening
 
 **Training:**
@@ -177,7 +177,7 @@ swasthya-scan/
 ├── models/
 │   ├── swasthya_scan_ecg.tflite        # ECG arrhythmia model
 │   ├── swasthya_scan_xray.tflite       # Chest X-ray pneumonia model
-│   └── swasthya_scan_derm.tflite       # Melanoma detection model
+│   └── swasthya_scan_derm.tflite       # Skin Conditions (7-class) model
 ├── docs/
 │   ├── ecg_confusion_matrix.png        # ECG model performance
 │   ├── xray_confusion_matrix.png       # X-ray model performance
@@ -246,9 +246,9 @@ This project aims to measure impact on:
 - **Output**: Sigmoid probability (0=Normal, 1=Pneumonia)
 
 #### Dermatology Model
-- **Input Shape**: (1, 128, 128, 3)
+- **Input Shape**: (1, 224, 224, 3)
 - **Input Type**: float32, normalized [0, 1]
-- **Output Shape**: (1, 1)
+- **Output Shape**: (1, 7)
 - **Output**: Sigmoid probability (0=Benign, 1=Malignant)
 
 ---
@@ -287,7 +287,7 @@ This project aims to measure impact on:
 ### Phase 1: Current (Complete)
 - [x] ECG arrhythmia detection
 - [x] Chest X-ray pneumonia detection
-- [x] Melanoma detection
+- [x] Skin Conditions (7-class)
 - [x] TensorFlow Lite optimization
 
 ### Phase 2: Expansion
